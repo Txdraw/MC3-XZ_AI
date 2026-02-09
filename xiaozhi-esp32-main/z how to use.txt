@@ -11,6 +11,3 @@ cd D:\Desktop\***
 idf.py build
 5. 烧录
 idf.py build flash monitor 
-
-6合并固件
-idf.py gen_merged_bin
