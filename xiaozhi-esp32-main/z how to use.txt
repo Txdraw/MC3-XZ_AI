@@ -3,7 +3,7 @@ cd D:\Desktop\***
 2、设置主板
  idf.py set-target esp32s3
 3、选择主板
-先idf.py menuconfig打开图形界面
+idf.py menuconfig打开图形界面
 然后Xiaozhi Assistant
 选Board Type
 从里面拉选MC3版本型号，选择保存

@@ -1,0 +1,13 @@
+{
+    "target": "esp32s3",
+    "builds": [
+        {
+            "name": "MC3-S3_old",
+            "sdkconfig_append": [
+            	  "CONFIG_SPIRAM=y",
+                "CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y",
+                "CONFIG_PARTITION_TABLE_CUSTOM_FILENAME=\"partitions_16M.csv\""
+            	]
+        }
+    ]
+}

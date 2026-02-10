@@ -1,0 +1,34 @@
+#ifndef _BOARD_CONFIG_H_
+#define _BOARD_CONFIG_H_
+
+#include <driver/gpio.h>
+#include <driver/spi_master.h>
+
+#define AUDIO_INPUT_SAMPLE_RATE  24000
+#define AUDIO_OUTPUT_SAMPLE_RATE 24000
+#define AUDIO_DEFAULT_OUTPUT_VOLUME 50
+
+#define AUDIO_INPUT_REFERENCE    true
+
+#define AUDIO_I2S_GPIO_MCLK GPIO_NUM_NC
+#define AUDIO_I2S_GPIO_WS GPIO_NUM_4
+#define AUDIO_I2S_GPIO_BCLK GPIO_NUM_5
+#define AUDIO_I2S_GPIO_DIN  GPIO_NUM_41
+#define AUDIO_I2S_GPIO_DOUT GPIO_NUM_6
+
+#define BUILTIN_LED_GPIO        GPIO_NUM_NC
+
+#define DISPLAY_WIDTH   320
+#define DISPLAY_HEIGHT  240
+#define DISPLAY_MIRROR_X true
+#define DISPLAY_MIRROR_Y false
+#define DISPLAY_SWAP_XY true
+
+#define DISPLAY_OFFSET_X  0
+#define DISPLAY_OFFSET_Y  0
+
+#define DISPLAY_BACKLIGHT_PIN GPIO_NUM_7
+#define DISPLAY_BACKLIGHT_OUTPUT_INVERT true
+
+
+#endif // _BOARD_CONFIG_H_
