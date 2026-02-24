@@ -25,7 +25,9 @@ bool first_run = true;
 class MC3_S3_Board : public WifiBoard
 {
 private:
+    Button boot_button_;
     LcdDisplay* display_;
+
 
     void InitializeSpi()
     {
@@ -77,12 +79,25 @@ private:
 
     }
 
+        void InitializeButtons() {
+        boot_button_.OnPressDown([this]() {
+            auto& app = Application::GetInstance();
+            if (app.GetDeviceState() == kDeviceStateStarting) {
+                EnterWifiConfigMode();
+                return;
+            }
+            app.ToggleChatState();
+        });
+    }
+
 
 public:
-    MC3_S3_Board() 
+    MC3_S3_Board():
+        boot_button_(BOOT_BUTTON_GPIO) 
     {
         InitializeSpi();
         InitializeSt7789Display();
+        InitializeButtons();
     }
 
     virtual AudioCodec *GetAudioCodec() override
