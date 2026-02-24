@@ -60,16 +60,15 @@ void WifiBoard::StartNetwork() {
 
     // Set unified event callback - forward to NetworkEvent with SSID data
     wifi_manager.SetEventCallback([this, &wifi_manager](WifiEvent event) {
-        std::string ssid = wifi_manager.GetSsid();
         switch (event) {
             case WifiEvent::Scanning:
                 OnNetworkEvent(NetworkEvent::Scanning);
                 break;
             case WifiEvent::Connecting:
-                OnNetworkEvent(NetworkEvent::Connecting, ssid);
+                OnNetworkEvent(NetworkEvent::Connecting, wifi_manager.GetSsid());
                 break;
             case WifiEvent::Connected:
-                OnNetworkEvent(NetworkEvent::Connected, ssid);
+                OnNetworkEvent(NetworkEvent::Connected, wifi_manager.GetSsid());
                 break;
             case WifiEvent::Disconnected:
                 OnNetworkEvent(NetworkEvent::Disconnected);
