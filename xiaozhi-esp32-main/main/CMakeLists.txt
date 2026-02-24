@@ -663,6 +663,17 @@ file(GLOB BOARD_SOURCES
 )
 list(APPEND SOURCES ${BOARD_SOURCES})
 
+# Add UI sources for specific boards
+if(CONFIG_BOARD_TYPE_MC3_S3)
+    file(GLOB MC3_S3_UI_SOURCES
+        ${CMAKE_CURRENT_SOURCE_DIR}/boards/mc3-s3/ui/*.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/boards/mc3-s3/ui/*.cc
+    )
+    list(APPEND SOURCES ${MC3_S3_UI_SOURCES})
+    list(APPEND SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/boards/mc3-s3/ui/ui_img_txdraw_png.c)
+    list(APPEND INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/boards/mc3-s3/ui)
+endif()
+
 # Select audio processor according to Kconfig
 if(CONFIG_USE_AUDIO_PROCESSOR)
     list(APPEND SOURCES "audio/processors/afe_audio_processor.cc")

@@ -5,6 +5,8 @@
 #include "button.h"
 #include "config.h"
 #include "i2c_device.h"
+#include "device_state.h"
+#include "mc3-s3_display.h"
 #include <esp_log.h>
 #include <driver/gpio.h>
 #include "assets/lang_config.h"
@@ -26,8 +28,7 @@ class MC3_S3_Board : public WifiBoard
 {
 private:
     Button boot_button_;
-    LcdDisplay* display_;
-
+    MC3_S3_SpiLcdDisplay* display_;
 
     void InitializeSpi()
     {
@@ -73,7 +74,7 @@ private:
         esp_lcd_panel_invert_color(panel, true);
         esp_lcd_panel_swap_xy(panel, DISPLAY_SWAP_XY);
         esp_lcd_panel_mirror(panel, DISPLAY_MIRROR_X, DISPLAY_MIRROR_Y);
-        display_ = new SpiLcdDisplay(panel_io, panel,
+        display_ = new MC3_S3_SpiLcdDisplay(panel_io, panel,
                                   DISPLAY_WIDTH, DISPLAY_HEIGHT, DISPLAY_OFFSET_X, DISPLAY_OFFSET_Y, DISPLAY_MIRROR_X, DISPLAY_MIRROR_Y, DISPLAY_SWAP_XY);
  				GetBacklight()->SetBrightness(100, true);                                 
 
