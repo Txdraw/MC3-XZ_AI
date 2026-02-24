@@ -4,8 +4,10 @@
         {
             "name": "MC3-S3",
             "sdkconfig_append": [
-                "CONFIG_LCD_ST7789_240X320"
-            ]
+            	  "CONFIG_SPIRAM=y",
+                "CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y",
+                "CONFIG_PARTITION_TABLE_CUSTOM_FILENAME=\"partitions_16M.csv\""
+            	]
         }
     ]
 }
